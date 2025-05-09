@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Require"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia culpa cupidatat pariatur tempor dolor. Lorem consectetur aute dolor aliquip in ipsum ea fugiat nisi aliqua cupidatat non eiusmod. Ut aliquip excepteur occaecat Lorem proident exercitation adipisicing."
+						}
+					}
+				]
+			},
+			"button": {
+				"__TYPE__": "LinkContent",
+				"key": "9ade45c2-a300-4a85-b33a-02235ee99cfa",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "bring"
+				}
+			}
+		},
+		"items": []
+	}
+]
