@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"youtubevideo_id": {
+				"__TYPE__": "FieldContent",
+				"value": "chemical",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
