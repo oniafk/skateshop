@@ -6,10 +6,10 @@
   "status": true,
   "json": {
     "Main": {
-      "fist_name": {
+      "first_name": {
         "type": "Text",
         "config": {
-          "label": "Fist Name",
+          "label": "First Name",
           "placeholder": ""
         }
       },

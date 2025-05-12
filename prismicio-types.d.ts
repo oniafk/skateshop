@@ -230,15 +230,15 @@ export type SkateboardDocument<Lang extends string = string> =
  */
 interface SkaterDocumentData {
   /**
-   * Fist Name field in *Skater*
+   * First Name field in *Skater*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: skater.fist_name
+   * - **API ID Path**: skater.first_name
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  fist_name: prismic.KeyTextField;
+  first_name: prismic.KeyTextField;
 
   /**
    * Last Name field in *Skater*
