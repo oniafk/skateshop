@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
 
 import { useIsSafari } from "@/lib/useIsSafari";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 gsap.registerPlugin(useGSAP);
 
