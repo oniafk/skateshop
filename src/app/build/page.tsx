@@ -4,25 +4,55 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+import { CustomizerControlsProvider } from "./context";
+import { createClient } from "@/prismicio";
 
-const page = async (props: Props) => {
+type SearchParams = {
+  wheel?: string;
+  deck?: string;
+  truck?: string;
+  bolt?: string;
+};
+
+const page = async (props: { searchParams: Promise<SearchParams> }) => {
+  const searchParams = await props.searchParams;
+
+  const client = createClient();
+  const customizerSettings = await client.getSingle("board_customizer");
+  const { wheels, decks, metals } = customizerSettings.data;
+
+  const defaultWheel =
+    wheels.find((wheel) => wheel.uid === searchParams.wheel) ?? wheels[0];
+  const defaultDeck =
+    decks.find((deck) => deck.uid === searchParams.deck) ?? decks[0];
+  const defaultTruck =
+    metals.find((metal) => metal.uid === searchParams.truck) ?? metals[0];
+  const defaultBolt =
+    metals.find((metal) => metal.uid === searchParams.bolt) ?? metals[0];
+
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
-      <div className="relative aspect-square shrink-0 bg-[#3a414a] lg:aspect-auto lg:grow">
-        <div className="absolute inset-0"></div>
-        <Link href="/" className="absolute left-6 top-6">
-          <Logo className="h-12 text-white" />
-        </Link>
-      </div>
-      <div className="grow bg-texture bg-zinc-900 text-white ~p-4/6 lg:w-96 lg:shrink-0 lg:grow-0">
-        <Heading as="h1" size="sm" className="mb-6 mt-0">
-          Build your board
-        </Heading>
-        <ButtonLink href="" color="lime" icon="plus">
-          Add to cart
-        </ButtonLink>
-      </div>
+      <CustomizerControlsProvider
+        defaultWheel={defaultWheel}
+        defaultDeck={defaultDeck}
+        defaultTruck={defaultTruck}
+        defaultBolt={defaultBolt}
+      >
+        <div className="relative aspect-square shrink-0 bg-[#3a414a] lg:aspect-auto lg:grow">
+          <div className="absolute inset-0"></div>
+          <Link href="/" className="absolute left-6 top-6">
+            <Logo className="h-12 text-white" />
+          </Link>
+        </div>
+        <div className="grow bg-texture bg-zinc-900 text-white ~p-4/6 lg:w-96 lg:shrink-0 lg:grow-0">
+          <Heading as="h1" size="sm" className="mb-6 mt-0">
+            Build your board
+          </Heading>
+          <ButtonLink href="" color="lime" icon="plus">
+            Add to cart
+          </ButtonLink>
+        </div>
+      </CustomizerControlsProvider>
     </div>
   );
 };
