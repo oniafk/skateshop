@@ -6,7 +6,6 @@ import * as THREE from "three";
 import React, { useEffect, useMemo, useRef } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { bumpMap, roughness } from "three/tsl";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 
@@ -34,6 +33,7 @@ type GLTFResult = GLTF & {
     Truck1: THREE.Mesh;
     Truck2: THREE.Mesh;
   };
+
   materials: {};
 };
 
