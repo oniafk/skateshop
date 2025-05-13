@@ -5,6 +5,7 @@ import { Content } from "@prismicio/client";
 import { PrismicText, SliceComponentProps } from "@prismicio/react";
 import React from "react";
 import { Skater } from "./Skater";
+import { SlideIn } from "@/components/SlideIn";
 
 /**
  * Props for `TeamGrid`.
@@ -31,9 +32,9 @@ const TeamGrid = async ({ slice }: TeamGridProps) => {
         {skaters.map((skater, index) => (
           <React.Fragment key={index}>
             {skater.data.first_name && (
-              // <SlideIn>
-              <Skater index={index} skater={skater} />
-              /* </SlideIn> */
+              <SlideIn>
+                <Skater index={index} skater={skater} />
+              </SlideIn>
             )}
           </React.Fragment>
         ))}
