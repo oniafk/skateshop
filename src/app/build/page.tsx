@@ -6,6 +6,8 @@ import React from "react";
 
 import { CustomizerControlsProvider } from "./context";
 import { createClient } from "@/prismicio";
+import Preview from "./Preview";
+import { asImageSrc } from "@prismicio/client";
 
 type SearchParams = {
   wheel?: string;
@@ -30,6 +32,13 @@ const page = async (props: { searchParams: Promise<SearchParams> }) => {
   const defaultBolt =
     metals.find((metal) => metal.uid === searchParams.bolt) ?? metals[0];
 
+  const wheelTextureURLs = wheels
+    .map((texture) => asImageSrc(texture.texture))
+    .filter((url): url is string => Boolean(url));
+  const deckTextureURLs = decks
+    .map((texture) => asImageSrc(texture.texture))
+    .filter((url): url is string => Boolean(url));
+
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
       <CustomizerControlsProvider
@@ -39,7 +48,12 @@ const page = async (props: { searchParams: Promise<SearchParams> }) => {
         defaultBolt={defaultBolt}
       >
         <div className="relative aspect-square shrink-0 bg-[#3a414a] lg:aspect-auto lg:grow">
-          <div className="absolute inset-0"></div>
+          <div className="absolute inset-0">
+            <Preview
+              deckTextureURLs={deckTextureURLs}
+              wheelTextureURLs={wheelTextureURLs}
+            />
+          </div>
           <Link href="/" className="absolute left-6 top-6">
             <Logo className="h-12 text-white" />
           </Link>
