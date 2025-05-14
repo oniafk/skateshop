@@ -20,7 +20,7 @@ type Props = Pick<
 > & {
   className?: string;
 };
-
+// TODO check how router changes the url and how to use it with the UID
 export default function Controls({ wheels, decks, metals, className }: Props) {
   const router = useRouter();
 
