@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 import {
   CameraControls,
@@ -38,6 +38,34 @@ export default function Preview({ wheelTextureURLs, deckTextureURLs }: Props) {
     asImageSrc(selectedDeck?.texture) ?? DEFAULT_DECK_TEXTURE;
   const truckColor = selectedTruck?.color ?? DEFAULT_TRUCK_COLOR;
   const boltColor = selectedBolt?.color ?? DEFAULT_BOLT_COLOR;
+
+  useEffect(() => {
+    setCameraControls(
+      new THREE.Vector3(0, 0.3, 0),
+      new THREE.Vector3(3, 1.2, 0.5)
+    );
+  }, [selectedDeck]);
+
+  useEffect(() => {
+    setCameraControls(
+      new THREE.Vector3(-0.3, 0.29, 0.4),
+      new THREE.Vector3(0.4, 0.25, 1)
+    );
+  }, [selectedTruck]);
+
+  useEffect(() => {
+    setCameraControls(
+      new THREE.Vector3(-0.08, 0.54, 0.64),
+      new THREE.Vector3(0.09, 1, 0.9)
+    );
+  }, [selectedWheel]);
+
+  useEffect(() => {
+    setCameraControls(
+      new THREE.Vector3(-0.25, 0.3, 0.62),
+      new THREE.Vector3(-0.4, 0.35, 1)
+    );
+  }, [selectedBolt]);
 
   function setCameraControls(target: THREE.Vector3, pos: THREE.Vector3) {
     if (!cameraControls.current) return;
